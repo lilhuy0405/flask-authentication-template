@@ -1,0 +1,4 @@
+.vscode
+.idea
+instance
+website/*.db

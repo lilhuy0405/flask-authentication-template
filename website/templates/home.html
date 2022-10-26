@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+  <h1 class="text-center">Notes</h1>
+  <div class="my-3">
+    <a href="/todos" class="btn btn-primary">Create Todos</a>
+  </div>
+  <ul class="list-group list-group-flush" id="notes">
+    {% for todo in user.todos%}
+      <li class="list-group-item">
+        {{todo.content}}
+        <form action="/delete-todo" method="POST">
+          <input type="hidden" name="id" value="{{todo.id}}">
+          <button type="submit" class="close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </form>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}
